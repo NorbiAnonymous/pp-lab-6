@@ -1,4 +1,5 @@
 
+
 package company.abstracts;
 
 import company.interfaces.Employable;
@@ -43,12 +44,18 @@ public abstract class Employee implements Employable {
     }
 
     public boolean equals(Object obj) {
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
         Employee other = (Employee) obj;
-        return this.id == other.id;
+        return id == other.id;
     }
 }
+
+
+
+
+
+
+
 
 

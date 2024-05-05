@@ -1,35 +1,58 @@
 
+
 import company.models.Manager;
 import company.models.Worker;
 import company.abstracts.Employee;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        Worker worker1 = new Worker("Norbert", 20000, 1, "2023-01-01", "Web Developer");
-        Worker worker2 = new Worker("Karol", 52000, 2, "2023-02-15", "DevOps Developer");
-        Worker worker3 = new Worker("Darek", 80000, 1, "2023-01-01", "Software Engineer");
-        Manager manager = new Manager("Madonna", 90000, 3, "2023-05-01", "Team Leader");
-
         ArrayList<Employee> employees = new ArrayList<>();
-        employees.add(worker1);
-        employees.add(worker2);
-        employees.add(worker3);
-        employees.add(manager);
+        employees.add(new Worker("Norbert", 20000, 1, "2023-01-01", "Web Developer"));
+        employees.add(new Worker("Karol", 52000, 2, "2023-02-15", "DevOps Developer"));
+        employees.add(new Worker("Darek", 70000, 1, "2023-01-01", "Software Engineer"));
+        employees.add(new Manager("Madonna", 60000, 3, "2023-05-01", "Team Leader"));
+        employees.add(new Worker("William", 75000, 2, "2023-03-01", "Tester"));
+        employees.add(new Manager("Morgan Freeman", 92000, 4, "2023-06-01", "Project Manager"));
+
+        double totalSalary = 0;
+        double totalManagerSalary = 0;
+        double totalWorkerSalary = 0;
+        Map<Integer, Integer> idCount = new HashMap<>();
 
         for (Employee emp : employees) {
-            System.out.println(emp.getName() + " has code: " + emp.hashCode());
+            totalSalary += emp.getSalary();
+
+            if (emp instanceof Manager) {
+                totalManagerSalary += emp.getSalary();
+            } else if (emp instanceof Worker) {
+                totalWorkerSalary += emp.getSalary();
+            }
+
+            idCount.put(emp.getId(), idCount.getOrDefault(emp.getId(), 0) + 1);
         }
 
-        System.out.println("Comparing workers with same ID:");
-        for (Employee emp : employees) {
-            if (worker1.equals(emp)) {
-                System.out.println(worker1.getName() + " equals " + emp.getName());
+        System.out.println("Total salary: " + totalSalary);
+        System.out.println("Total salary for Managers: " + totalManagerSalary);
+        System.out.println("Total salary for Workers: " + totalWorkerSalary);
+
+        System.out.println("Employees with duplicate IDs:");
+        for (Map.Entry<Integer, Integer> entry : idCount.entrySet()) {
+            if (entry.getValue() > 1) {
+
+
             }
         }
     }
 }
+
+
+
+
+
 
 
 

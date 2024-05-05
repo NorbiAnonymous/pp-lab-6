@@ -1,3 +1,5 @@
+
+
 package company.models;
 
 import company.abstracts.Employee;
@@ -11,6 +13,8 @@ public final class Worker extends Employee {
         System.out.println("Worker " + getName() + " is working...");
     }
 }
+
+
 
 
 
