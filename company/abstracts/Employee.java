@@ -1,3 +1,4 @@
+
 package company.abstracts;
 
 import company.interfaces.Employable;
@@ -9,10 +10,10 @@ public abstract class Employee implements Employable {
     private String hireDate;
     private String position;
 
-    public Employee(int id, String name, double salary, String hireDate, String position) {
-        this.id = id;
+    public Employee(String name, double salary, int id, String hireDate, String position) {
         this.name = name;
         this.salary = salary;
+        this.id = id;
         this.hireDate = hireDate;
         this.position = position;
     }
@@ -37,8 +38,17 @@ public abstract class Employee implements Employable {
         return position;
     }
 
-    @Override
     public int hashCode() {
         return id;
     }
+
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Employee other = (Employee) obj;
+        return this.id == other.id;
+    }
 }
+
+
