@@ -3,8 +3,8 @@ package company.models;
 import company.abstracts.Employee;
 
 public final class Worker extends Employee {
-    public Worker(String name, double salary, int id) {
-        super(name, salary, id);
+    public Worker(int id, String name, double salary, String hireDate, String position) {
+        super(id, name, salary, hireDate, position);
     }
 
     @Override
@@ -12,6 +12,4 @@ public final class Worker extends Employee {
         System.out.println("Worker " + getName() + " is working...");
     }
 }
-
-
 
